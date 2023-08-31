@@ -5,7 +5,21 @@
     <div class="col-xxl-10">
         <div class="w3-panel w3-card card ">
             <div id="white">
+                <table class="table table-bordered data-table table-flush dataTable-table" id="datatable-basic">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Name</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th width="100px">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -47,14 +61,4 @@
         });
     });
 </script>
-<style>
-    /* .w3-panel {
-    margin-top: -65px;
-    margin-left: 10px;
-    margin-right: 23px;
-}
-
-.paginate_button .page-item  {
-    background-color: #ffffff !important;
-}
-</style> */
+  

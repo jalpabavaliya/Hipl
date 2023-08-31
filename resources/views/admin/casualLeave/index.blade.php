@@ -5,7 +5,23 @@
     <div class="col-xxl-10">
         <div class="w3-panel w3-card card ">
             <div id="white">
-
+                <form>
+                    <h4 style="font-family: Poppins; font-size: 30px;font-weight: 600;line-height: 32px;letter-spacing: 0px;text-align: left;color: #05004E;  font-weight: bold;">Casual Leave</h4>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="input-group input-group-outline my-3">
+                                <label class="form-label">Total Casual Leave </label>
+                                <input type="text" class="form-control">
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group input-group-outline my-3">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form> 
             </div>
         </div>
     </div>
@@ -47,14 +63,3 @@
         });
     });
 </script>
-<style>
-    /* .w3-panel {
-    margin-top: -65px;
-    margin-left: 10px;
-    margin-right: 23px;
-}
-
-.paginate_button .page-item  {
-    background-color: #ffffff !important;
-}
-</style> */
