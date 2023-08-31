@@ -60,7 +60,7 @@
               <div class="card-body">
               <img src="logo.png" id="logo" width="300px">
 
-                <form  action="{{ route('submit') }}" method="POST" role="form" class="text-start">
+                <form  action="{{ route('login') }}" method="POST" role="form" class="text-start">
                   @csrf
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">E-mail</label>
@@ -96,7 +96,7 @@
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script>
-    {!! Toastr::message() !!}
+    
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {

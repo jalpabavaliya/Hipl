@@ -12,7 +12,7 @@ class AuthController extends Controller
     {
         return view('welcome');
     }
-    public function submit(Request $request)
+    public function store(Request $request)
     {   
         $input = $request->all();
    

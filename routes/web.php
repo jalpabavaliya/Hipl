@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\DepartmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,14 +15,25 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-Route::get('/', [AuthController::class, 'login']);
-Route::post('/login', [AuthController::class, 'submit'])->name('submit');
-
-
+Route::post('/login', [AuthController::class, 'store'])->name('login');
 
 
 Route::post('/employee', 'App\Http\Controllers\EmployeeController@index')->name('employee');
 Route::get('employee/list', [EmployeeController::class, 'getEmployee'])->name('employee.list');
+
+Route::get('/department', 'App\Http\Controllers\DepartmentController@index');
+Route::get('department/list', [DepartmentController::class, 'getDepartment'])->name('department.list');
+Route::post('/store', 'App\Http\Controllers\DepartmentController@store')->name('store');
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/login', function () {
+    return view('welcome');
+});
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
@@ -50,9 +62,6 @@ Route::get('/project', function () {
     return view('admin.project.index');
 });
 
-Route::get('/profile', function () {
-    return view('admin.profile.profile');
-});
 Route::get('/employee/create', function () {
     return view('admin.employee.create');
 });
@@ -89,28 +98,7 @@ Route::get('/leave-policy', function () {
     return view('admin.leavePolicy.index');
 });
 
-Route::get('/department', function () {
-    return view('admin.department.index');
-});
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
