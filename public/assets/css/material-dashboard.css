@@ -3725,7 +3725,7 @@ fieldset:disabled .btn {
 
 .btn-secondary {
   --bs-btn-color: #000;
-  --bs-btn-bg: #192354;
+  --bs-btn-bg: #c4e4f1;
   --bs-btn-border-color: #192354;
   --bs-btn-hover-color: #000;
   --bs-btn-hover-bg: #8f93a9;
@@ -20676,7 +20676,7 @@ fieldset:disabled .btn {
 
 .btn-secondary:hover,
 .btn.bg-gradient-secondary:hover {
-  background-color: #192354;
+  background-color: #c4e4f1;
   border-color: #192354;
   /* box-shadow: 0 14px 26px -12px rgba(, 128, 154, 0.4), 0 4px 23px 0 rgba(, 128, 154, 0.15), 0 8px 10px -5px rgba(, 128, 154, 0.2); */
 }
@@ -20692,8 +20692,8 @@ fieldset:disabled .btn {
 .btn.bg-gradient-secondary:not(:disabled):not(.disabled).active,
 .btn.bg-gradient-secondary:not(:disabled):not(.disabled):active,
 .show>.btn.bg-gradient-secondary.dropdown-toggle {
-  color: color-yiq(#192354);
-  background-color: #192354;
+  color: color-yiq(#c4e4f1);
+  background-color: #c4e4f1;
 }
 
 .btn-secondary.focus,

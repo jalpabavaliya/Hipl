@@ -60,21 +60,22 @@
               <div class="card-body">
               <img src="logo.png" id="logo" width="300px">
 
-                <form role="form" class="text-start" action="{{ url('dashboard') }}" >
+                <form  action="{{ route('submit') }}" method="POST" role="form" class="text-start">
+                  @csrf
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">E-mail</label>
-                    <input type="email" class="form-control">
+                    <input type="email" name="email" class="form-control">
                   </div>
                   <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control">
+                    <input type="password" name="password"  class="form-control">
                   </div>
                   <div class="text-center">
                     <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
                   </div>
-                  <p class="mt-4 text-sm text-center">
+                  {{-- <p class="mt-4 text-sm text-center">
                     <a href="{{ url('forgot-password') }}" class="text-primary text-gradient font-weight-bold">Forgot Password ?</a>
-                  </p>
+                  </p> --}}
                 </form>
               </div>
             </div>
@@ -95,6 +96,7 @@
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script>
+    {!! Toastr::message() !!}
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\Auth\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,18 +14,14 @@ use App\Http\Controllers\EmployeeController;
 |
 */
 
+Route::get('/', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'submit'])->name('submit');
+
+
+
+
 Route::post('/employee', 'App\Http\Controllers\EmployeeController@index')->name('employee');
 Route::get('employee/list', [EmployeeController::class, 'getEmployee'])->name('employee.list');
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
@@ -53,8 +50,6 @@ Route::get('/project', function () {
     return view('admin.project.index');
 });
 
-
-
-
-
-
+Route::get('/profile', function () {
+    return view('admin.profile.profile');
+});

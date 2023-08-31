@@ -5,16 +5,16 @@
             <div class="header-image">
                 <img src="image/Rectangle 1393.png" alt="">
                 <span>
-                    <h4 class="header-title">Deep Jethva&nbsp;<i class="fa-solid fa-angle-down"></i></h4>
-                    <p>Admin</p>
-
-                    <div class="hide-header-form">
-                        <div class="hide-form">
-                            <h5 class="hide-title"><a href="#">My Profile</a></h5>
-                            <h5><a href="#">Change Password</a></h5>
-                            <h5><a href="#">Log out</a></h5>
-                        </div>
-                    </div>
+                    <div class="btn-group dropdown">
+                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                         Deep jethva
+                        </button>
+                        <ul class="dropdown-menu px-2 py-3" aria-labelledby="dropdownMenuButton">
+                          <li><a class="dropdown-item border-radius-md" href="{{ url('profile') }}">My Profile</a></li>
+                          <li><a class="dropdown-item border-radius-md" href="javascript:;">Change Password</a></li>
+                          <li><a class="dropdown-item border-radius-md" href="javascript:;">Logout</a></li>
+                        </ul>
+                      </div>
                 </span>
 
             </div>
