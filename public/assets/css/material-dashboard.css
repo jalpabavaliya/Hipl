@@ -2776,6 +2776,7 @@ progress {
   border-color: transparent;
   outline: 0;
   box-shadow: none;
+  
 }
 
 .form-control::-webkit-date-and-time-value {
@@ -21702,6 +21703,7 @@ fieldset:disabled .btn {
 
 .dark-version .input-group.input-group-outline .form-control {
   border-color: rgba(255, 255, 255, 0.4) !important;
+  
 }
 
 .dark-version .input-group .is-valid,
@@ -28817,11 +28819,95 @@ table.dataTable thead>tr>td.sorting {
         width: 100%;
     }
 }
- #add {
-        color: #fff;
-        margin-left: 1330px;
-        height: 49px;
-        width: 196px;
-        background-color: #192354;
-        border-color: #192354;
-    }
+#add {
+  color: #fff;
+  margin-left: 1370px;
+  height: 49px;
+  width: 160px;
+  background-color: #192354;
+  border-color: #192354;
+  margin-top: 27px;
+  margin-bottom: -18px;
+  border-radius: 15px;
+}
+
+#add1 {
+  background-color: #192354;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-color: #192354;
+  margin-top: 27px;
+  /* margin-top: 27px; */
+  margin-left: 1389px;
+  margin-bottom: -18px;
+  border-radius: 15px;
+}
+
+        .Neon {
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #494949;
+    position: relative;
+    
+
+}
+.Neon * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.Neon-input-dragDrop {
+    display: block;
+    width: 343px;
+    margin: 0 auto 25px auto;
+    padding: 25px;
+    color: #8d9499;
+    color: #97A1A8;
+    background: #fff;
+    border: 2px dashed #C8CBCE;
+    text-align: center;
+    -webkit-transition: box-shadow 0.3s, border-color 0.3s;
+    -moz-transition: box-shadow 0.3s, border-color 0.3s;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+.Neon-input-dragDrop .Neon-input-icon {
+    font-size: 48px;
+    margin-top: -10px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.Neon-input-text h3 {
+    margin: 0;
+    font-size: 18px;
+}
+.Neon-input-text span {
+    font-size: 12px;
+}
+.Neon-input-choose-btn.blue {
+    color: #008BFF;
+    border: 1px solid #008BFF;
+}
+.Neon-input-choose-btn {
+    display: inline-block;
+    padding: 8px 14px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: bold;
+    color: #8d9496;
+    border-radius: 3px;
+    border: 1px solid #c6c6c6;
+    vertical-align: middle;
+    background-color: #fff;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.05);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+}

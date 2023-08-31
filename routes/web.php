@@ -53,3 +53,64 @@ Route::get('/project', function () {
 Route::get('/profile', function () {
     return view('admin.profile.profile');
 });
+Route::get('/employee/create', function () {
+    return view('admin.employee.create');
+});
+
+Route::get('/leave', function () {
+    return view('admin.leave.index');
+});
+
+Route::get('/project', function () {
+    return view('admin.project.index');
+});
+
+Route::get('/salary', function () {
+    return view('admin.salary.index');
+});
+
+Route::get('/salary-report', function () {
+    return view('admin.salaryReport.index');
+});
+
+Route::get('/leave-record', function () {
+    return view('admin.leaveRecord.index');
+});
+
+Route::get('/casual-leave', function () {
+    return view('admin.casualLeave.index');
+});
+
+Route::get('/documents', function () {
+    return view('admin.documents.index');
+});
+
+Route::get('/leave-policy', function () {
+    return view('admin.leavePolicy.index');
+});
+
+Route::get('/department', function () {
+    return view('admin.department.index');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

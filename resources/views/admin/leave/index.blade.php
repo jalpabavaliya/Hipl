@@ -4,7 +4,7 @@
     @include('layouts.sidebar')
     <div class="col-xxl-10">
         <button type="button" class="btn btn-primary" data-toggle="modal" id="add" data-target="#exampleModalCenter">
-        Add Project
+        Add Leave
         </button>
         <div class="w3-panel w3-card card ">
             <div id="white">
@@ -12,11 +12,11 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Project Name</th>
-                            <th>Project Status</th>
-                            <th>Productivity</th>
-                            <th>Start Date</th>
-                            <th>Due Date</th>
+                            <th>From Date</th>
+                            <th>To Date</th>
+                            <th>No. of Leave</th>
+                            <th>Leave Status</th>
+                            <th>Leave Reasons</th>
                             <th width="100px">Action</th>
                         </tr>
                     </thead>
@@ -30,40 +30,30 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle" style="font-family: Poppins; font-size: 30px;font-weight: 600;line-height: 32px;letter-spacing: 0px;text-align: left;color: #05004E;  font-weight: bold;">Add Project</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle" style="font-family: Poppins; font-size: 30px;font-weight: 600;line-height: 32px;letter-spacing: 0px;text-align: left;color: #05004E;  font-weight: bold;">Add Leave</h5>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group input-group-outline my-3">
-                                <input type="date" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Please Select</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Productivity</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
                                 <input type="date" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
-                                <input type="date" class="form-control">
+                                <label class="form-label">Select leave type</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="input-group input-group-outline my-3">
+                                <label class="form-label">Enter leave reason</label>
+                                <input type="text" class="form-control">
                             </div>
                         </div>
                     </div>

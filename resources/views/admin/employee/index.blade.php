@@ -3,28 +3,27 @@
 <div class="row bg-light vh-100">
     @include('layouts.sidebar')
     <div class="col-xxl-10">
-        <button type="button" id="add" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Projects</button>
-    </div>
-    <div class="col-xxl-10">
-            <div class="w3-panel w3-card card ">
-                <div id="white">
-                    <table class="table table-bordered data-table table-flush dataTable-table" id="datatable-basic">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Name</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th width="100px">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
+        <!-- <button type="button" id="add" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Employee</button> -->
+        <a href="{{ url('employee/create') }}" id="add1" >Add Employee</a>
+        <div class="w3-panel w3-card card ">
+            <div id="white">
+                <table class="table table-bordered data-table table-flush dataTable-table" id="datatable-basic">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Employee Name</th>
+                            <th>Department</th>
+                            <th>Mobile Number</th>
+                            <th>Status</th>
+                            <th width="100px">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
             </div>
-        </main>
+        </div>
     </div>
 </div>
 @include('layouts.footer')
@@ -64,10 +63,4 @@
         });
     });
 </script>
-<style>
-    .w3-panel {
-    margin-top: -65px;
-    margin-left: 10px;
-    margin-right: 23px;
-}
-</style>
+  
