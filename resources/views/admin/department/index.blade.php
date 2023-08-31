@@ -29,19 +29,20 @@
                 <h5 class="modal-title" id="exampleModalLongTitle" style="font-family: Poppins; font-size: 30px;font-weight: 600;line-height: 32px;letter-spacing: 0px;text-align: left;color: #05004E;  font-weight: bold;">Department</h5>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post" action="{{ route('store')}}">
+                @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </form>
@@ -57,14 +58,14 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: false,
-            ajax: "{{ route('employee.list') }}",
+            ajax: "{{ route('department.list') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'email',
-                    name: 'email'
+                    data: 'name',
+                    name: 'name'
                 },
                 {
                     data: 'action',

@@ -2,8 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DepartmentController;
+=======
+use App\Http\Controllers\DepartmentController;
+
+>>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -97,7 +102,6 @@ Route::get('/documents', function () {
 Route::get('/leave-policy', function () {
     return view('admin.leavePolicy.index');
 });
-
 
 
 
