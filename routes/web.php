@@ -2,13 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DepartmentController;
-=======
-use App\Http\Controllers\DepartmentController;
-
->>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +16,9 @@ use App\Http\Controllers\DepartmentController;
 */
 
 Route::post('/login', [AuthController::class, 'store'])->name('login');
-
+Route::get('/profile', function () {
+    return view('admin.profile.profile');
+});
 
 Route::post('/employee', 'App\Http\Controllers\EmployeeController@index')->name('employee');
 Route::get('employee/list', [EmployeeController::class, 'getEmployee'])->name('employee.list');
@@ -29,7 +26,6 @@ Route::get('employee/list', [EmployeeController::class, 'getEmployee'])->name('e
 Route::get('/department', 'App\Http\Controllers\DepartmentController@index');
 Route::get('department/list', [DepartmentController::class, 'getDepartment'])->name('department.list');
 Route::post('/store', 'App\Http\Controllers\DepartmentController@store')->name('store');
-
 
 Route::get('/', function () {
     return view('welcome');
