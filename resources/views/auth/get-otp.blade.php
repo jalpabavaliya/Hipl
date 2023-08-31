@@ -58,23 +58,16 @@
                 <!-- </div> -->
               <!-- </div> -->
               <div class="card-body">
-              <img src="logo.png" id="logo" width="300px">
-
-                <form role="form" class="text-start" action="{{ url('dashboard') }}" >
+                <h3> Enter OTP </h3>
+                Please enter OTP sent to admin@habano.com
+                <form role="form" class="text-start" action="{{ url('set-password') }}" >
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">E-mail</label>
                     <input type="email" class="form-control">
                   </div>
-                  <div class="input-group input-group-outline mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control">
-                  </div>
                   <div class="text-center">
-                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
                   </div>
-                  <p class="mt-4 text-sm text-center">
-                    <a href="{{ url('forgot-password') }}" class="text-primary text-gradient font-weight-bold">Forgot Password ?</a>
-                  </p>
                 </form>
               </div>
             </div>
@@ -111,10 +104,15 @@
 
 </html>
 <style>
-img, svg {
-    vertical-align: middle;
-    margin-top: -100px;
-    margin-left: 21px;
-    margin-bottom: -27px;
+h1, .h1, .h1, h2, .h2, .h2, h3, .h3, .h3, h4, .h4, .h4 {
+    letter-spacing: -0.05rem;
+    margin-top: -3px;
+    margin-left: 110px;
 }
+.card .card-body {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    padding: 2.5rem;
+    margin-bottom: 73px;
+}
+
 </style>

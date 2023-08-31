@@ -58,22 +58,18 @@
                 <!-- </div> -->
               <!-- </div> -->
               <div class="card-body">
-              <img src="logo.png" id="logo" width="300px">
-
-                <form role="form" class="text-start" action="{{ url('dashboard') }}" >
+                <h3> Forgot Password </h3>
+                <h6>Enter your email and we will Send you a reset link</h6>
+                <form role="form" class="text-start" action="{{ url('get-otp') }}" >
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">E-mail</label>
                     <input type="email" class="form-control">
                   </div>
-                  <div class="input-group input-group-outline mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control">
-                  </div>
                   <div class="text-center">
-                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Send me the link</button>
                   </div>
                   <p class="mt-4 text-sm text-center">
-                    <a href="{{ url('forgot-password') }}" class="text-primary text-gradient font-weight-bold">Forgot Password ?</a>
+                    <a href="{{ url('login') }}" class="text-primary text-gradient font-weight-bold">Back to login</a>
                   </p>
                 </form>
               </div>
@@ -111,10 +107,13 @@
 
 </html>
 <style>
-img, svg {
-    vertical-align: middle;
-    margin-top: -100px;
-    margin-left: 21px;
-    margin-bottom: -27px;
+h1, .h1, .h1, h2, .h2, .h2, h3, .h3, .h3, h4, .h4, .h4 {
+    letter-spacing: -0.05rem;
+    margin-top: -51px;
+}
+
+h4, .h4, .h4, h5, .h5, .h5, h6, .h6, .h6 {
+    font-weight: 600;
+    margin-top: 20px;
 }
 </style>
