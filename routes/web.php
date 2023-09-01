@@ -7,6 +7,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\CasualLeaveController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ Route::get('/login', function () {
 });
 
 Auth::routes();
-
+// dd(auth()->user());
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function() {
@@ -54,7 +55,8 @@ Route::post('/department/store', 'App\Http\Controllers\DepartmentController@stor
 
 Route::get('/project', 'App\Http\Controllers\ProjectController@index');
 Route::get('project/list', [ProjectController::class, 'getProject'])->name('project.list');
-
+Route::post('/project/store', 'App\Http\Controllers\ProjectController@store')->name('project.store');
+ 
 Route::get('/salary', 'App\Http\Controllers\SalaryController@index');
 Route::get('salary/list', [SalaryController::class, 'getSalary'])->name('salary.list');
 

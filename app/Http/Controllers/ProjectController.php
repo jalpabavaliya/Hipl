@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Yajra\DataTables\Facades\DataTables;
+use Validator;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ProjectController extends Controller
 {
     public function index()
     {
-        return view('admin.project.index');
+        $date = now()->format('d-m-y');
+        return view('admin.project.index', compact('date'));
     }
 
     public function getProject(Request $request){
@@ -28,31 +31,31 @@ class ProjectController extends Controller
         }
     }
 
-    // public function store(Request $request){
-    //     try {
-    //         $validateUser = Validator::make($request->all(), 
-    //         [
-    //             'name' => 'required',
-    //         ]);
-    //         if($validateUser->fails()){
-    //                 return response()->json([
-    //                     'message' => 'validation error',
-    //                     'errors' => $validateUser->errors()
-    //                 ], 401);
-    //         }
-        
-    //         $user = User::where('mobile_no', $request->mobile_no)->first();
+    public function store(Request $request)
+    {
+        try {
+            $validateUser = Validator::make($request->all(), [
+                'project_name' => 'required',
+                'status' => 'required',
+                'start_date' => 'required|date',
+                'end_date' => 'required|date',
+                'productivity' => 'required|numeric',
 
-    //         return response()->json([            
-    //             'message' => 'User Logged In Successfully',
-    //             'token' => $user->createToken('authToken')->plainTextToken
-    //         ], 200);
-
-    //     } catch (\Throwable $th) {
-    //         return response()->json([
-    //             'status' => false,
-    //             'message' => $th->getMessage()
-    //         ], 500);
-    //     }
-    // }
+            ]);
+            if($validateUser->fails()){
+                return back();
+            }
+            Project::create([
+                'project_name' => $request->project_name,
+                'project_status' => $request->status,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'productivity' => $request->productivity,
+            ]);
+            Toastr::info('Success! Project Save Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            return back();
+        }    
+    }
 }

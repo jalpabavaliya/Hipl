@@ -13,6 +13,7 @@
                         <tr>
                             <th>No</th>
                             <th>Project Name</th>
+                            <th>Project Status</th>
                             <th>Productivity</th>
                             <th>Start Date</th>
                             <th>Due Date</th>
@@ -32,44 +33,51 @@
                 <h5 class="modal-title" id="exampleModalLongTitle" style="font-family: Poppins; font-size: 30px;font-weight: 600;line-height: 32px;letter-spacing: 0px;text-align: left;color: #05004E;  font-weight: bold;">Add Project</h5>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post" action="{{ route('project.store') }}">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="input-group input-group-outline my-3">
-                                <input type="date" class="form-control">
+                                <label class="form-label">Project Name</label>
+                                <input type="text" name="project_name" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6">
+                            {{-- <label class="form-label">Project Status</label> --}}
                             <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Please Select</label>
-                                <input type="text" class="form-control">
+                                <select class="form-control" name="status" id="exampleFormControlSelect1" required>
+                                  <option value="0">In Progress</option>
+                                  <option value="1">Complete</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="input-group input-group-outline my-3">
+                            <label class="form-label">Starting Date</label>
+                            <div class="input-group input-group-outline">
+                                <input type="date" name="start_date" value="{{ Carbon\Carbon::now()->format('Y-m-d') }}" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">End Date</label>
+                            <div class="input-group input-group-outline">
+                                <input type="date" name="end_date"  value="{{ Carbon\Carbon::now()->format('Y-m-d') }}" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group input-group-outline my-4">
                                 <label class="form-label">Productivity</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-group input-group-outline my-3">
-                                <input type="date" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group input-group-outline my-3">
-                                <input type="date" class="form-control">
+                                <input type="text" name="productivity" class="form-control" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </form>
@@ -94,6 +102,17 @@
                     data: 'project_name',
                     name: 'project_name'
                 },
+                { data: "project_status",
+                render: function(data, type, row, meta){
+                    //   if(type === 'display'){
+                        if(data === 0){
+                            data = '<span class="bg-primary text-sm p-2 rounded text-light">In Progress</span>';
+                        }
+                        else if(data === 1){
+                            data = '<span class="bg-success text-sm p-2 rounded text-light">Complete</span>';
+                        }
+                        return data;
+                    }},
                 {
                     data: 'productivity',
                     name: 'productivity'

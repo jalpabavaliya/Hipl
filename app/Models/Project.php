@@ -10,7 +10,8 @@ class Project extends Model
     use HasFactory;
     protected $table = 'project_master';
     protected $fillable = [
-        'project_master',
+        'project_name',
+        'project_status',
         'productivity',
         'start_date',
         'end_date',
