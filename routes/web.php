@@ -22,10 +22,27 @@ use App\Http\Controllers\CasualLeaveController;
 Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'store'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-// Route::get('logout', 'Logincontroller@logout')->name('logout');
 
 Route::get('/profile', function () {
     return view('admin.profile.profile');
+});
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/login', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
 });
 
 Route::post('/employee', 'App\Http\Controllers\EmployeeController@index')->name('employee');
@@ -44,80 +61,39 @@ Route::get('salary/list', [SalaryController::class, 'getSalary'])->name('salary.
 Route::get('/casual-leave', 'App\Http\Controllers\CasualLeaveController@index');
 Route::post('/casual-leave/store', [CasualLeaveController::class, 'store'])->name('casual.store');
 
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
-
 Route::get('/employee', function () {
     return view('admin.employee.index');
 });
-
 Route::get('/employee', function () {
     return view('admin.employee.index');
 });
-
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
 });
-
 Route::get('/get-otp', function () {
     return view('auth.get-otp');
 });
-
 Route::get('/set-password', function () {
     return view('auth.set-password');
 });
-
-// Route::get('/project', function () {
-//     return view('admin.project.index');
-// });
-
 Route::get('/employee/create', function () {
     return view('admin.employee.create');
 });
-
 Route::get('/leave', function () {
     return view('admin.leave.index');
 });
-
-// Route::get('/project', function () {
-//     return view('admin.project.index');
-// });
-
-// Route::get('/salary', function () {
-//     return view('admin.salary.index');
-// });
-
 Route::get('/salary-report', function () {
     return view('admin.salaryReport.index');
 });
-
 Route::get('/leave-record', function () {
     return view('admin.leaveRecord.index');
 });
-
-// Route::get('/casual-leave', function () {
-//     return view('admin.casualLeave.index');
-// });
-
 Route::get('/documents', function () {
     return view('admin.documents.index');
 });
-
 Route::get('/leave-policy', function () {
     return view('admin.leavePolicy.index');
 });
-
-
-
-

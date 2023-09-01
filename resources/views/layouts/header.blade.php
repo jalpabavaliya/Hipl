@@ -33,6 +33,5 @@
     <script src="../assets/js/stackpath.bootstrapcdn.com_bootstrap_4.1.3_js_bootstrap.min.js?time()'"></script>
     <script src="../assets/js/cdn.datatables.net_1.10.19_js_dataTables.bootstrap4.min.js?time()'"></script>
     <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
-    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="../assets/js/core/toastr.min.js"></script>
     {!! Toastr::message() !!}

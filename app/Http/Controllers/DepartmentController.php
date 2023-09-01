@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Department;
 use Validator;
 use Yajra\DataTables\Facades\DataTables;
+use Brian2694\Toastr\Facades\Toastr;
 
 class DepartmentController extends Controller
 {
@@ -40,6 +41,7 @@ class DepartmentController extends Controller
             Department::create([
                 'name' => $request->name,
             ]);
+            Toastr::info('Success! Deparment Save Successfully');
             return back();
         } catch (\Throwable $th) {
             return back();
