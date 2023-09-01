@@ -15,7 +15,11 @@ use App\Http\Controllers\DepartmentController;
 |
 */
 
+Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'store'])->name('login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::get('logout', 'Logincontroller@logout')->name('logout');
+
 Route::get('/profile', function () {
     return view('admin.profile.profile');
 });

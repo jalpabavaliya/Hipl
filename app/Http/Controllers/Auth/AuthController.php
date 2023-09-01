@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -15,22 +16,26 @@ class AuthController extends Controller
     public function store(Request $request)
     {   
         $input = $request->all();
-   
-    // dd($input['email']);
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
-   
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-                return redirect('dashboard');
-
+            Toastr::info('Success! Logged In');
+            return redirect('dashboard');
         }else{
-            // Toastr::error('Error! Invalid email or password');
+            Toastr::error('Error! Invalid email or password');
             // return redirect()->back();
-            return back()->with('failed', 'Failed! User not created');
+            return back();
         }
-          
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        Toastr::info('Success! Logged Out');
+        return redirect('/');
     }
 }

@@ -73,7 +73,7 @@
 
         <div class="w3-row w3-container fluid mt-3">
             <a onclick="openCity(event, 'London');">
-                <div class="w3-half tablink w3-bottombar w3-padding active">Profile Details</div>
+                <div class="w3-half tablink w3-bottombar w3-border-blue w3-padding active">Profile Details</div>
             </a>
             <a onclick="openCity(event, 'Paris');">
                 <div class="w3-half tablink w3-bottombar w3-padding">Edit Profile</div>

@@ -12,6 +12,7 @@
     
 </div>
 @include('layouts.footer')
+{!! Toastr::message() !!}
 <script>
     $(function() {
         var table = $('.data-table').DataTable({
