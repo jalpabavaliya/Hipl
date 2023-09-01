@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\CasualLeaveController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +33,18 @@ Route::get('employee/list', [EmployeeController::class, 'getEmployee'])->name('e
 
 Route::get('/department', 'App\Http\Controllers\DepartmentController@index');
 Route::get('department/list', [DepartmentController::class, 'getDepartment'])->name('department.list');
-Route::post('/store', 'App\Http\Controllers\DepartmentController@store')->name('store');
+Route::post('/department/store', 'App\Http\Controllers\DepartmentController@store')->name('department.store');
+
+Route::get('/project', 'App\Http\Controllers\ProjectController@index');
+Route::get('project/list', [ProjectController::class, 'getProject'])->name('project.list');
+
+Route::get('/salary', 'App\Http\Controllers\SalaryController@index');
+Route::get('salary/list', [SalaryController::class, 'getSalary'])->name('salary.list');
+
+Route::get('/casual-leave', 'App\Http\Controllers\CasualLeaveController@index');
+Route::post('/casual-leave/store', [CasualLeaveController::class, 'store'])->name('casual.store');
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -63,9 +78,9 @@ Route::get('/set-password', function () {
     return view('auth.set-password');
 });
 
-Route::get('/project', function () {
-    return view('admin.project.index');
-});
+// Route::get('/project', function () {
+//     return view('admin.project.index');
+// });
 
 Route::get('/employee/create', function () {
     return view('admin.employee.create');
@@ -75,13 +90,13 @@ Route::get('/leave', function () {
     return view('admin.leave.index');
 });
 
-Route::get('/project', function () {
-    return view('admin.project.index');
-});
+// Route::get('/project', function () {
+//     return view('admin.project.index');
+// });
 
-Route::get('/salary', function () {
-    return view('admin.salary.index');
-});
+// Route::get('/salary', function () {
+//     return view('admin.salary.index');
+// });
 
 Route::get('/salary-report', function () {
     return view('admin.salaryReport.index');
@@ -91,9 +106,9 @@ Route::get('/leave-record', function () {
     return view('admin.leaveRecord.index');
 });
 
-Route::get('/casual-leave', function () {
-    return view('admin.casualLeave.index');
-});
+// Route::get('/casual-leave', function () {
+//     return view('admin.casualLeave.index');
+// });
 
 Route::get('/documents', function () {
     return view('admin.documents.index');

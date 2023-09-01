@@ -13,7 +13,6 @@
                         <tr>
                             <th>No</th>
                             <th>Project Name</th>
-                            <th>Project Status</th>
                             <th>Productivity</th>
                             <th>Start Date</th>
                             <th>Due Date</th>
@@ -86,36 +85,32 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: false,
-            ajax: "{{ route('employee.list') }}",
+            ajax: "{{ route('project.list') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'first_name',
-                    name: 'first_name'
+                    data: 'project_name',
+                    name: 'project_name'
                 },
                 {
-                    data: 'mobile',
-                    name: 'mobile'
+                    data: 'productivity',
+                    name: 'productivity'
                 },
                 {
-                    data: 'date_of_joining',
-                    name: 'date_of_joining'
+                    data: 'start_date',
+                    name: 'start_date'
                 },
                 {
-                    data: 'email',
-                    name: 'email'
-                },
-                {
-                    data: 'email',
-                    name: 'email'
+                    data: 'end_date',
+                    name: 'end_date'
                 },
                 {
                     data: 'action',
                     name: 'action',
-                    orderable: false,
-                    searchable: false
+                    // orderable: false,
+                    // searchable: false
                 },
             ]
         });

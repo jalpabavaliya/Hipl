@@ -5,11 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class CasualLeave extends Model
 {
     use HasFactory;
-    protected $table = "department";
-    protected $fillable = [
-        'name',
-    ];
+    protected $table = "casual_leave_master";
 }

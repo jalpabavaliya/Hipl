@@ -5,13 +5,14 @@
     <div class="col-xxl-10">
         <div class="w3-panel w3-card card ">
             <div id="white">
-                <form>
+                <form method="POST" action="{{ route('casual.store') }}">
+                @csrf
                     <h4 style="font-family: Poppins; font-size: 30px;font-weight: 600;line-height: 32px;letter-spacing: 0px;text-align: left;color: #05004E;  font-weight: bold;">Casual Leave</h4>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Total Casual Leave </label>
-                                <input type="text" class="form-control">
+                                <label class="form-label"></label>
+                                <input type="text" class="form-control" name="leave" value="{{ $data->number_of_leave }}">
                                
                             </div>
                         </div>

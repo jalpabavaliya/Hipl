@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Department;
 use Validator;
+use Yajra\DataTables\Facades\DataTables;
 
 class DepartmentController extends Controller
 {
@@ -30,30 +31,19 @@ class DepartmentController extends Controller
 
     public function store(Request $request){
         try {
-            $validateUser = Validator::make($request->all(), 
-            [
+            $validateUser = Validator::make($request->all(), [
                 'name' => 'required',
             ]);
             if($validateUser->fails()){
-                    return response()->json([
-                        'message' => 'validation error',
-                        'errors' => $validateUser->errors()
-                    ], 401);
+                return back();
             }
-        
-            $user = User::where('mobile_no', $request->mobile_no)->first();
-
-            return response()->json([            
-                'message' => 'User Logged In Successfully',
-                'token' => $user->createToken('authToken')->plainTextToken
-            ], 200);
-
+            Department::create([
+                'name' => $request->name,
+            ]);
+            return back();
         } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => $th->getMessage()
-            ], 500);
-        }
+            return back();
+        }    
     }
 
 }

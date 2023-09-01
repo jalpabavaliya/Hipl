@@ -66,18 +66,18 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: false,
-            ajax: "{{ route('employee.list') }}",
+            ajax: "{{ route('salary.list') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'first_name',
-                    name: 'first_name'
+                    data: 'user.first_name',
+                    name: 'user.first_name'
                 },
                 {
-                    data: 'mobile',
-                    name: 'mobile'
+                    data: 'salary',
+                    name: 'salary'
                 },
                 {
                     data: 'action',

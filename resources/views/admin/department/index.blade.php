@@ -17,7 +17,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                     </tbody>
                 </table>
             </div>
@@ -29,13 +28,13 @@
                 <h5 class="modal-title" id="exampleModalLongTitle" style="font-family: Poppins; font-size: 30px;font-weight: 600;line-height: 32px;letter-spacing: 0px;text-align: left;color: #05004E;  font-weight: bold;">Department</h5>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('store')}}">
+                <form method="post" action="{{ route('department.store') }}">
                 @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" class="form-control" required>
+                                <input type="text" class="form-control" name="name" required>
                             </div>
                         </div>
                     </div>
@@ -59,7 +58,8 @@
             processing: true,
             serverSide: false,
             ajax: "{{ route('department.list') }}",
-            columns: [{
+            columns: [
+                {
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
                 },
