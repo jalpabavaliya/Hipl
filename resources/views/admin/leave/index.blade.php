@@ -37,7 +37,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
-                                <input type="date" class="form-control">
+                                <input type="date" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Select leave type</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Enter leave reason</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" required>
                             </div>
                         </div>
                     </div>

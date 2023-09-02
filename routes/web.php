@@ -7,6 +7,10 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\CasualLeaveController;
+<<<<<<< Updated upstream
+=======
+use App\Http\Controllers\RoleController;
+>>>>>>> Stashed changes
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -19,24 +23,13 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [AuthController::class, 'login'])->name('login');
+// Route::get('/', [AuthController::class, 'login'])->name('login');
+Route::get('/', function () { return view('auth.login'); });
+Route::get('/login', function () { return view('auth.login'); });
 Route::post('/login', [AuthController::class, 'store'])->name('login');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
-Route::get('/profile', function () {
-    return view('admin.profile.profile');
-});
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', function () {
-    return view('welcome');
-});
 
 Auth::routes();
+<<<<<<< Updated upstream
 // dd(auth()->user());
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -45,24 +38,36 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
 });
+=======
 
+Route::resource('roles', RoleController::class);
+Route::resource('users', UserController::class);
+Route::resource('products', ProductController::class);
+>>>>>>> Stashed changes
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/profile', function () { return view('admin.profile.profile'); });
 Route::post('/employee', 'App\Http\Controllers\EmployeeController@index')->name('employee');
 Route::get('employee/list', [EmployeeController::class, 'getEmployee'])->name('employee.list');
-
+Route::post('employee/store', [EmployeeController::class, 'store'])->name('employee.store');
 Route::get('/department', 'App\Http\Controllers\DepartmentController@index');
 Route::get('department/list', [DepartmentController::class, 'getDepartment'])->name('department.list');
 Route::post('/department/store', 'App\Http\Controllers\DepartmentController@store')->name('department.store');
-
 Route::get('/project', 'App\Http\Controllers\ProjectController@index');
 Route::get('project/list', [ProjectController::class, 'getProject'])->name('project.list');
+<<<<<<< Updated upstream
 Route::post('/project/store', 'App\Http\Controllers\ProjectController@store')->name('project.store');
  
+=======
+>>>>>>> Stashed changes
 Route::get('/salary', 'App\Http\Controllers\SalaryController@index');
 Route::get('salary/list', [SalaryController::class, 'getSalary'])->name('salary.list');
-
 Route::get('/casual-leave', 'App\Http\Controllers\CasualLeaveController@index');
 Route::post('/casual-leave/store', [CasualLeaveController::class, 'store'])->name('casual.store');
 
+Route::get('/home', function () {
+    return view('admin.dashboard');
+});
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
@@ -99,3 +104,7 @@ Route::get('/documents', function () {
 Route::get('/leave-policy', function () {
     return view('admin.leavePolicy.index');
 });
+
+
+
+
