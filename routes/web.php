@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\LoginHistoryController;
 use App\Http\Controllers\CasualLeaveController;
 <<<<<<< Updated upstream
 =======
@@ -62,6 +63,13 @@ Route::post('/project/store', 'App\Http\Controllers\ProjectController@store')->n
 >>>>>>> Stashed changes
 Route::get('/salary', 'App\Http\Controllers\SalaryController@index');
 Route::get('salary/list', [SalaryController::class, 'getSalary'])->name('salary.list');
+<<<<<<< Updated upstream
+=======
+
+Route::get('/login-history', 'App\Http\Controllers\LoginHistoryController@index');
+Route::get('login-history/list', [LoginHistoryController::class, 'getLoginHistory'])->name('login_history.list');
+
+>>>>>>> Stashed changes
 Route::get('/casual-leave', 'App\Http\Controllers\CasualLeaveController@index');
 Route::post('/casual-leave/store', [CasualLeaveController::class, 'store'])->name('casual.store');
 
