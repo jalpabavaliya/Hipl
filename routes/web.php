@@ -8,10 +8,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\LoginHistoryController;
 use App\Http\Controllers\CasualLeaveController;
-<<<<<<< Updated upstream
-=======
 use App\Http\Controllers\RoleController;
->>>>>>> Stashed changes
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -30,7 +27,6 @@ Route::get('/login', function () { return view('auth.login'); });
 Route::post('/login', [AuthController::class, 'store'])->name('login');
 
 Auth::routes();
-<<<<<<< Updated upstream
 // dd(auth()->user());
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -39,12 +35,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
 });
-=======
 
 Route::resource('roles', RoleController::class);
 Route::resource('users', UserController::class);
 Route::resource('products', ProductController::class);
->>>>>>> Stashed changes
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/profile', function () { return view('admin.profile.profile'); });
@@ -56,20 +50,14 @@ Route::get('department/list', [DepartmentController::class, 'getDepartment'])->n
 Route::post('/department/store', 'App\Http\Controllers\DepartmentController@store')->name('department.store');
 Route::get('/project', 'App\Http\Controllers\ProjectController@index');
 Route::get('project/list', [ProjectController::class, 'getProject'])->name('project.list');
-<<<<<<< Updated upstream
 Route::post('/project/store', 'App\Http\Controllers\ProjectController@store')->name('project.store');
- 
-=======
->>>>>>> Stashed changes
+
 Route::get('/salary', 'App\Http\Controllers\SalaryController@index');
 Route::get('salary/list', [SalaryController::class, 'getSalary'])->name('salary.list');
-<<<<<<< Updated upstream
-=======
 
 Route::get('/login-history', 'App\Http\Controllers\LoginHistoryController@index');
 Route::get('login-history/list', [LoginHistoryController::class, 'getLoginHistory'])->name('login_history.list');
 
->>>>>>> Stashed changes
 Route::get('/casual-leave', 'App\Http\Controllers\CasualLeaveController@index');
 Route::post('/casual-leave/store', [CasualLeaveController::class, 'store'])->name('casual.store');
 
