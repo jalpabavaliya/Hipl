@@ -9,6 +9,7 @@ use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\LoginHistoryController;
 use App\Http\Controllers\CasualLeaveController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\LeaveController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -30,15 +31,8 @@ Auth::routes();
 // dd(auth()->user());
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => ['auth']], function() {
-    Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class);
-    Route::resource('products', ProductController::class);
-});
-
 Route::resource('roles', RoleController::class);
-Route::resource('users', UserController::class);
-Route::resource('products', ProductController::class);
+
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/profile', function () { return view('admin.profile.profile'); });
@@ -60,6 +54,13 @@ Route::get('login-history/list', [LoginHistoryController::class, 'getLoginHistor
 
 Route::get('/casual-leave', 'App\Http\Controllers\CasualLeaveController@index');
 Route::post('/casual-leave/store', [CasualLeaveController::class, 'store'])->name('casual.store');
+
+Route::post('/leave', 'App\Http\Controllers\LeaveController@index')->name('leave');
+Route::get('leave/list', [LeaveController::class, 'getLeave'])->name('leave.list');
+Route::post('leave/store', [LeaveController::class, 'store'])->name('leave.store');
+
+// leave.store
+
 
 Route::get('/home', function () {
     return view('admin.dashboard');

@@ -16,7 +16,6 @@
                             <th>To Date</th>
                             <th>No. of Leave</th>
                             <th>Leave Status</th>
-                            <th>Leave Reasons</th>
                             <th width="100px">Action</th>
                         </tr>
                     </thead>
@@ -33,34 +32,39 @@
                 <h5 class="modal-title" id="exampleModalLongTitle" style="font-family: Poppins; font-size: 30px;font-weight: 600;line-height: 32px;letter-spacing: 0px;text-align: left;color: #05004E;  font-weight: bold;">Add Leave</h5>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{ route('leave.store') }}" method="POST">
+                @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
-                                <input type="date" class="form-control" required>
+                                <input type="text" class="form-control" name="dates"  required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Select leave type</label>
-                                <input type="text" class="form-control" required>
+                                <select name="leave_type" class="form-control" required>
+                                    <option value="">Select leave type</option>
+                                    <option value="0">Full Day</option>
+                                    <option value="1">First Half Day</option>
+                                    <option value="2">Second Half Day</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Enter leave reason</label>
-                                <input type="text" class="form-control" required>
+                                <textarea name="leave_reason" class="form-control" required>
+                                </textarea>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </form>
@@ -71,35 +75,33 @@
     </div>
 </div>
 @include('layouts.footer')
+
 <script>
+    $('input[name="dates"]').daterangepicker();
     $(function() {
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: false,
-            ajax: "{{ route('employee.list') }}",
+            ajax: "{{ route('leave.list') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'first_name',
-                    name: 'first_name'
+                    data: 'start_date',
+                    name: 'start_date'
                 },
                 {
-                    data: 'mobile',
-                    name: 'mobile'
+                    data: 'end_date',
+                    name: 'end_date'
                 },
                 {
-                    data: 'date_of_joining',
-                    name: 'date_of_joining'
+                    data: 'number_of_leave',
+                    name: 'number_of_leave'
                 },
                 {
-                    data: 'email',
-                    name: 'email'
-                },
-                {
-                    data: 'email',
-                    name: 'email'
+                    data: 'number_of_leave',
+                    name: 'number_of_leave'
                 },
                 {
                     data: 'action',
@@ -111,4 +113,3 @@
         });
     });
 </script>
-  
