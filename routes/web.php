@@ -42,6 +42,9 @@ Route::post('employee/store', [EmployeeController::class, 'store'])->name('emplo
 Route::get('/department', 'App\Http\Controllers\DepartmentController@index');
 Route::get('department/list', [DepartmentController::class, 'getDepartment'])->name('department.list');
 Route::post('/department/store', 'App\Http\Controllers\DepartmentController@store')->name('department.store');
+Route::delete('/department/{id}','App\Http\Controllers\DepartmentController@destroy')->name('department.destroy');
+Route::get('/department/edit/{id}', 'App\Http\Controllers\DepartmentController@edit')->name('department.edit');
+
 Route::get('/project', 'App\Http\Controllers\ProjectController@index');
 Route::get('project/list', [ProjectController::class, 'getProject'])->name('project.list');
 Route::post('/project/store', 'App\Http\Controllers\ProjectController@store')->name('project.store');
