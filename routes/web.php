@@ -63,9 +63,10 @@ Route::post('/casual-leave/store', [CasualLeaveController::class, 'store'])->nam
 Route::post('/leave', 'App\Http\Controllers\LeaveController@index')->name('leave');
 Route::get('leave/list', [LeaveController::class, 'getLeave'])->name('leave.list');
 Route::post('leave/store', [LeaveController::class, 'store'])->name('leave.store');
+Route::delete('/leave/{id}','App\Http\Controllers\LeaveController@destroy')->name('leave.destroy');
+Route::get('/leave/edit/{id}', 'App\Http\Controllers\LeaveController@edit')->name('leave.edit');
 
 // leave.store
-
 
 Route::get('/home', function () {
     return view('admin.dashboard');

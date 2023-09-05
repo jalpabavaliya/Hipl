@@ -34,17 +34,18 @@
             <div class="modal-body">
                 <form action="{{ route('leave.store') }}" method="POST">
                 @csrf
+                <input type="hidden" name="leave_id" id="leave_id">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" name="dates"  required>
+                                <input type="text" class="form-control" name="dates" id="dates" selected>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
-                                <select name="leave_type" class="form-control" required>
+                                <select name="leave_type" id="leave_type" class="form-control" required>
                                     <option value="">Select leave type</option>
                                     <option value="0">Full Day</option>
                                     <option value="1">First Half Day</option>
@@ -56,7 +57,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
-                                <textarea name="leave_reason" class="form-control" required>
+                                <textarea name="leave_reason" id="leave_reason" class="form-control" required>
                                 </textarea>
                             </div>
                         </div>
@@ -75,10 +76,17 @@
     </div>
 </div>
 @include('layouts.footer')
-
+{!! Toastr::message() !!}
 <script>
     $('input[name="dates"]').daterangepicker();
     $(function() {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: false,
@@ -96,12 +104,12 @@
                     name: 'end_date'
                 },
                 {
-                    data: 'number_of_leave',
-                    name: 'number_of_leave'
+                    data: 'leave_type',
+                    name: 'leave_type'
                 },
                 {
-                    data: 'number_of_leave',
-                    name: 'number_of_leave'
+                    data: 'leave_type',
+                    name: 'leave_type'
                 },
                 {
                     data: 'action',
@@ -110,6 +118,37 @@
                     searchable: false
                 },
             ]
+        });
+
+        $('body').on('click', '.editLeave', function() {
+            var leave_id = $(this).data('id');
+            $.get("{{ url('leave') }}" + '/' + 'edit/' + leave_id, function(
+                data) {
+                $('#exampleModalCenter').modal('show');
+                $('#leave_id').val(data.id);
+                $('#dates').val(data.start_date);
+                $('#dates').val(data.end_date);
+                $('#leave_type').val(data.leave_type);
+                $('#leave_reason').val(data.leave_reason);
+            })
+        });
+
+
+        $('body').on('click', '.deleteLeave', function() {
+            var leave_id = $(this).data("id");
+            alert("Are You sure want to delete !");
+
+            $.ajax({
+                type: "DELETE",
+                url: "{{ url('leave') }}" + '/' + leave_id,
+                success: function(data) {
+                    table.draw();
+                    location.reload(true);
+                },
+                error: function(data) {
+                    console.log('Error:', data);
+                }
+            });
         });
     });
 </script>

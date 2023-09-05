@@ -7,6 +7,8 @@
             <div id="white">
                 <form method="post" action="{{ route('employee.store') }}">
                 @csrf
+                <input type="hidden" name="emp_id" id="emp_id">
+                
                     <h4 style="font-family: Poppins; font-size: 30px;font-weight: 600;line-height: 32px;letter-spacing: 0px;text-align: left;color: #05004E;  font-weight: bold;">Add Employee</h4>
                     <p style="font-family: Poppins;font-size: 20px;font-weight: 500;line-height: 30px;letter-spacing: 0px;text-align: left;color: #78819F">Basic Details</p>
                     <div class="row">
@@ -76,9 +78,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="input-group input-group-outline my-3">
-                                <textarea class="form-control" name="address" >
-                                    
-                                </textarea>
+                                <textarea class="form-control" name="address"></textarea>
                             </div>
                         </div>
                     </div>
