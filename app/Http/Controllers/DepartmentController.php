@@ -117,7 +117,7 @@ class DepartmentController extends Controller
             return back();
         } catch (\Throwable $th) {
             return back();
-        }    
+        }
     }
 
     public function edit($d_id)

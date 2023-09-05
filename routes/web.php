@@ -34,7 +34,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('roles', RoleController::class);
 
 
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/profile', function () { return view('admin.profile.profile'); });
 Route::post('/employee', 'App\Http\Controllers\EmployeeController@index')->name('employee');
 Route::get('employee/list', [EmployeeController::class, 'getEmployee'])->name('employee.list');
@@ -48,6 +48,8 @@ Route::get('/department/edit/{id}', 'App\Http\Controllers\DepartmentController@e
 Route::get('/project', 'App\Http\Controllers\ProjectController@index');
 Route::get('project/list', [ProjectController::class, 'getProject'])->name('project.list');
 Route::post('/project/store', 'App\Http\Controllers\ProjectController@store')->name('project.store');
+Route::get('/project/edit/{id}', 'App\Http\Controllers\ProjectController@edit')->name('project.edit');
+Route::delete('/project/delete/{id}', 'App\Http\Controllers\ProjectController@destroy');
 
 Route::get('/salary', 'App\Http\Controllers\SalaryController@index');
 Route::get('salary/list', [SalaryController::class, 'getSalary'])->name('salary.list');

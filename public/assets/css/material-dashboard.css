@@ -2776,7 +2776,7 @@ progress {
   border-color: transparent;
   outline: 0;
   box-shadow: none;
-  
+
 }
 
 .form-control::-webkit-date-and-time-value {
@@ -21703,7 +21703,7 @@ fieldset:disabled .btn {
 
 .dark-version .input-group.input-group-outline .form-control {
   border-color: rgba(255, 255, 255, 0.4) !important;
-  
+
 }
 
 .dark-version .input-group .is-valid,
@@ -28851,7 +28851,7 @@ table.dataTable thead>tr>td.sorting {
     font-size: 14px;
     color: #494949;
     position: relative;
-    
+
 
 }
 .Neon * {

@@ -23,8 +23,12 @@ class ProjectController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $actionBtn = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-pencil">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fa-solid fa-trash"></i>';
-                    return $actionBtn;
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn-sm"><i class="fa-solid editProject fa-pencil"></i></a>';
+
+                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="delete"><i class="fa-solid fa-trash"></i></a>';
+
+                    return $btn;
+
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -45,17 +49,44 @@ class ProjectController extends Controller
             if($validateUser->fails()){
                 return back();
             }
-            Project::create([
-                'project_name' => $request->project_name,
-                'project_status' => $request->status,
-                'start_date' => $request->start_date,
-                'end_date' => $request->end_date,
-                'productivity' => $request->productivity,
-            ]);
-            Toastr::info('Success! Project Save Successfully');
+            if ($request->id) {
+                // Update the existing project
+                Project::where('id', $request->id)->update(
+                     ['project_name' => $request->project_name,
+                    'project_status' => $request->status,
+                    'start_date' => $request->start_date,
+                    'end_date' => $request->end_date,
+                    'productivity' => $request->productivity,]);
+                Toastr::info('Success! Project updated successfully');
+            } else {
+                // Create a new project
+                Project::create([
+                        'project_name' => $request->project_name,
+                        'project_status' => $request->status,
+                        'start_date' => $request->start_date,
+                        'end_date' => $request->end_date,
+                        'productivity' => $request->productivity,
+                    ]);
+                    Toastr::info('Success! Project Save Successfully');
+            }
+
+
             return back();
         } catch (\Throwable $th) {
             return back();
-        }    
+        }
     }
+    public function edit(string $id)
+    {
+        $project = Project::find($id);
+        return response()->json($project);
+    }
+
+    public function destroy($id)
+    {
+        Project::find($id)->delete($id);
+
+        return response()->json(['success'=>'Project deleted successfully.']);
+    }
+
 }

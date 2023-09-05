@@ -36,5 +36,4 @@
     <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
     <script src="../assets/js/core/toastr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
     {!! Toastr::message() !!}
