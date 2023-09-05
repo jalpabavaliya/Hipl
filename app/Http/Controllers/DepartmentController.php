@@ -50,33 +50,26 @@ class DepartmentController extends Controller
             Toastr::success('Success! Department Inserted');
             return back();
         }
-<<<<<<< Updated upstream
 
+        // try {
+        //     $validateUser = Validator::make($request->all(), [
+        //         'name' => 'required',
+        //     ]);
+        //     if($validateUser->fails()){
+        //         return back();
+        //     }
+        //     Department::updateOrCreate([
+        //         'id' => $request->department_id,
+        //     ],
+        //     [
+        //         'name' => $request->name,
+        //     ]);
+        //     Toastr::info('Success! Deparment Save Successfully');
+        //     return back();
+        // } catch (\Throwable $th) {
+        //     return back();
+        // }
 
-
-
-
-
-        try {
-            $validateUser = Validator::make($request->all(), [
-                'name' => 'required',
-            ]);
-            if($validateUser->fails()){
-                return back();
-            }
-            Department::updateOrCreate([
-                'id' => $request->department_id,
-            ],
-            [
-                'name' => $request->name,
-            ]);
-            Toastr::info('Success! Deparment Save Successfully');
-            return back();
-        } catch (\Throwable $th) {
-            return back();
-        }
-=======
->>>>>>> Stashed changes
     }
 
     public function edit($d_id)
