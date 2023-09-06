@@ -50,14 +50,14 @@ class ProjectController extends Controller
                 return back();
             }
             if ($request->id) {
-                // Update the existing project
-                Project::where('id', $request->id)->update(
-                     ['project_name' => $request->project_name,
+                Project::where('id', $request->id)->update([
+                    'project_name' => $request->project_name,
                     'project_status' => $request->status,
                     'start_date' => $request->start_date,
                     'end_date' => $request->end_date,
                     'productivity' => $request->productivity,]);
-                Toastr::info('Success! Project updated successfully');
+                Toastr::success('Success! Project Updated successfully');
+                return back();
             } else {
                 // Create a new project
                 Project::create([
@@ -67,11 +67,9 @@ class ProjectController extends Controller
                         'end_date' => $request->end_date,
                         'productivity' => $request->productivity,
                     ]);
-                    Toastr::info('Success! Project Save Successfully');
+                    Toastr::success('Success! Project Inserted Successfully');
+                    return back();
             }
-
-
-            return back();
         } catch (\Throwable $th) {
             return back();
         }
@@ -84,9 +82,8 @@ class ProjectController extends Controller
 
     public function destroy($id)
     {
-        Project::find($id)->delete($id);
-
-        return response()->json(['success'=>'Project deleted successfully.']);
+        Project::find($id)->delete();
+        Toastr::success('Success! Project Deleted Successfully');
     }
 
 }

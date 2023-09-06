@@ -100,6 +100,7 @@
     </div>
 </div>
 @include('layouts.footer')
+{!! Toastr::message() !!}
 <script>
     $(function() {
         $.ajaxSetup({
@@ -183,8 +184,8 @@
                     type: "DELETE",
                     url: "{{ url('project/delete', ['id' => '']) }}/" + id,
                     success: function(data) {
-                        // Refresh the DataTable
-                        table.ajax.reload();
+                        table.draw();
+                        location.reload(true);
                     },
                     error: function(data) {
                         console.log('Error:', data);

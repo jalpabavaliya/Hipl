@@ -34,11 +34,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('roles', RoleController::class);
 
 
-// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/profile', function () { return view('admin.profile.profile'); });
 Route::post('/employee', 'App\Http\Controllers\EmployeeController@index')->name('employee');
 Route::get('employee/list', [EmployeeController::class, 'getEmployee'])->name('employee.list');
 Route::post('employee/store', [EmployeeController::class, 'store'])->name('employee.store');
+Route::get('/employee/edit/{id}', 'App\Http\Controllers\EmployeeController@edit')->name('employee.edit');
+Route::post('employee/edit/{id}', 'App\Http\Controllers\EmployeeController@update');
+Route::delete('employee/delete/{id}', 'App\Http\Controllers\EmployeeController@destroy')->name('employee.delete');
+
 Route::get('/department', 'App\Http\Controllers\DepartmentController@index');
 Route::get('department/list', [DepartmentController::class, 'getDepartment'])->name('department.list');
 Route::post('/department/store', 'App\Http\Controllers\DepartmentController@store')->name('department.store');

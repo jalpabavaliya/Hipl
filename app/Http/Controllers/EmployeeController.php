@@ -22,8 +22,12 @@ class EmployeeController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $actionBtn = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-pencil">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fa-solid fa-trash"></i>';
-                    return $actionBtn;
+
+                    $btn = '<a href="'.route('employee.edit', ['id' => $row->id]).'" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn-sm"><i class="fa-solid editProject fa-pencil"></i></a>';
+
+                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="delete"><i class="fa-solid fa-trash"></i></a>';
+
+                    return $btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -32,72 +36,97 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
-
-        // $data = $request->input();
-        // $ins = array(
-        //     'first_name' => $data['first_name'] ? $data['first_name'] : 'N/A',
-        //     'middle_name' => $data['middle_name'] ? $data['middle_name'] : 'N/A',
-        //     'last_name' => $data['last_name'] ? $data['last_name'] : 'N/A',
-        //     'emp_code' => $data['empcode'] ? $data['empcode'] : 'N/A',
-        //     'mobile' => $data['mno'] ? $data['mno'] : 'N/A',
-        //     'birth_date' => $data['b_date'] ? $data['b_date'] : 'N/A',
-        //     'dept' => $data['department'] ? $data['department'] : 'N/A',
-        //     'date_of_joining' => $data['joining_date'] ? $data['joining_date'] : 'N/A',
-        //     'address' => $data['address'] ? $data['address'] : 'N/A',
-        //     'email' => $data['email'] ? $data['email'] : 'N/A',
-        //     'password' =>  Hash::make($data['password']),
-        // );
-
-        // if (!empty($data['emp_id'])) {
-        //     User::where('id', $data['emp_id'])->update($ins);
-        //     Toastr::success('Success! User Updated');
-
-        //     return back();
-        // } else {
-        //     User::create($ins)->id;
-
-        //     Toastr::success('Success! User Inserted');
-        //     return view('admin.employee.index');
-        // }
-
         try {
             $validateUser = Validator::make($request->all(), [
-                'empcode' => 'required',
+                'emp_code' => 'required',
                 'first_name' => 'required',
                 'middle_name' => 'required',
                 'last_name' => 'required',
-                'mno' => 'required',
-                'email' => 'required',
-                'b_date' => 'required',
-                'department' => 'required',
-                'joining_date' => 'required',
+                'mobile' => 'required',
+                'email' => 'required|email',
+                'birth_date' => 'required|date',
+                'dept' => 'required',
+                'date_of_joining' => 'required|date',
                 'password' => 'required',
-                'address' => 'required',
+                'address' => 'nullable',
             ]);
             if($validateUser->fails()){
                 return back();
             }
-            $user = User::create([
+            User::create([
                 'first_name' => $request->first_name,
                 'middle_name' => $request->middle_name,
                 'last_name' => $request->last_name,
-                'emp_code' => $request->empcode,
-                'mobile' => $request->mno,
-                'birth_date' => $request->b_date,
-                'dept' => $request->department,
-                'date_of_joining' => $request->joining_date,
+                'emp_code' => $request->emp_code,
+                'mobile' => $request->mobile,
+                'birth_date' => $request->birth_date,
+                'dept' => $request->dept,
+                'date_of_joining' => $request->date_of_joining,
                 'address' => $request->address,
                 'email' => $request->email,
                 'password' =>  Hash::make($request->password),
             ]);
 
-
-            dd($user);
-            Toastr::info('Success! User Save Successfully');
-            return redirect('admin.employee.index');
+            Toastr::success('Success! Employee Saved Successfully');
+            return redirect()->route('employee');
         } catch (\Throwable $th) {
             return back();
-        }    
+        }
     }
 
+    public function update(Request $request, $id)
+    {
+        try {
+            $validateUser = Validator::make($request->all(), [
+                'emp_code' => 'required',
+                'first_name' => 'required',
+                'middle_name' => 'required',
+                'last_name' => 'required',
+                'mobile' => 'required',
+                'email' => 'required|email',
+                'birth_date' => 'required|date',
+                'dept' => 'required',
+                'date_of_joining' => 'required|date',
+                'address' => 'nullable',
+            ]);
+            if($validateUser->fails()){
+                return back();
+            }
+
+            $user = User::where('id', $request->id)->update([
+                'first_name' => $request->first_name,
+                'middle_name' => $request->middle_name,
+                'last_name' => $request->last_name,
+                'emp_code' => $request->emp_code,
+                'mobile' => $request->mobile,
+                'birth_date' => $request->birth_date,
+                'dept' => $request->dept,
+                'date_of_joining' => $request->date_of_joining,
+                'address' => $request->address,
+                'email' => $request->email,
+                'password' =>  Hash::make($request->password),]);
+                Toastr::success('Success! Employee Updated Successfully');
+            return redirect()->route('employee');
+        } catch (\Throwable $th) {
+            return back();
+        }
+    }
+
+
+
+    public function edit(string $id)
+    {
+        $user = User::findOrFail($id);
+
+        if (!$user) {
+            return back()->with('error', 'Employee not found.');
+        }
+        return view('admin.employee.create', compact('user'));
+
+    }
+    public function destroy($id)
+    {
+        User::find($id)->delete();
+        Toastr::success('Success! User Deleted Successfully');
+    }
 }
