@@ -15,6 +15,7 @@ class AuthController extends Controller
     }
     public function store(Request $request)
     {   
+
         $input = $request->all();
         $this->validate($request, [
             'email' => 'required|email',

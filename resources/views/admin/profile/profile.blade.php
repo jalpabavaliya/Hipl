@@ -110,120 +110,125 @@
                         <p>:</p>
                     </div>
                     <div class="col-9 py-3">
-                        <p>000000</p>
-                        <p>John</p>
-                        <p>Gordon</p>
-                        <p>Smith</p>
-                        <p>+91 9283236237</p>
-                        <p>demo@gmail.com</p>
-                        <p>01/01/2004</p>
-                        <p>Flutter</p>
-                        <p>01/01/2004</p>
-                        <p>302, Angle squre, near silver <br> bussiness hub, vip circle, mota <br> varachha, surat -
-                            394101</p>
+                        <p>{{ isset($user->emp_code) ? $user->emp_code : 'N/A' }}</p>
+                        <p>{{ isset($user->first_name) ? $user->first_name : 'N/A' }}</p>
+                        <p>{{ isset($user->middle_name) ? $user->middle_name : 'N/A' }}</p>
+                        <p>{{ isset($user->last_name) ? $user->last_name : 'N/A' }}</p>
+                        <p>{{ isset($user->mobile) ? $user->mobile : 'N/A' }}</p>
+                        <p>{{ isset($user->email) ? $user->email : 'N/A' }}</p>
+                        <p>{{ isset($user->birth_date) ? $user->birth_date : 'N/A' }}</p>
+                        <p>
+                            @foreach ($departs as $depart)
+                                @if ($depart->id == $user->dept)
+                                    {{ isset($depart->name) ? $depart->name : 'N/A' }}
+                                @endif
+                            @endforeach
+                        </p>
+                        <p>{{ isset($user->date_of_joining) ? $user->date_of_joining : 'N/A' }}</p>
+                        <p>{{ isset($user->address) ? $user->address : 'N/A' }}</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="Paris" class="w3-container city mt-5"  style="display:none">
+        <div id="Paris" class="w3-container city mt-5" style="display:none">
             <div class="container-fluid bg-white p-4" style="border-radius: 20px;">
                 <h4>Profile Details</h4>
 
-                <form action="">
+                <form action="{{ route('profile.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="user_id"
+                        value="@if(!empty($user)){{$user->id}}@endif" id="user_id">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Employee Code</label>
-                                <input type="text" class="form-control">
+                        <div class="col-md-4 mt-4">
+                            <label class="form-label">Employee Code</label>
+                            <div class="input-group input-group-outline">
+                                <input type="text" name="emp_code" placeholder="Employee Code"
+                                    value="@if(!empty($user)){{$user->emp_code}}@endif"
+                                    class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="input-group input-group-outline my-3">
-                                <label class="form-label">First Name</label>
-                                <input type="text" class="form-control">
+                        <div class="col-md-4 mt-4">
+                            <label class="form-label">First Name</label>
+                            <div class="input-group input-group-outline">
+                                <input type="text" name="first_name" placeholder="First Name"
+                                    value="@if(!empty($user)){{ $user->first_name }}@endif"
+                                    class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Middle Name</label>
-                                <input type="text" class="form-control">
+                        <div class="col-md-4 mt-4">
+                            <label class="form-label">Middle Name</label>
+                            <div class="input-group input-group-outline">
+                                <input type="text" name="middle_name" placeholder="Middle Name"
+                                    value="@if(!empty($user)){{ $user->middle_name }}@endif"
+                                    class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mt-4">
+                            <label class="form-label">Last Name</label>
+                            <div class="input-group input-group-outline">
+                                <input type="text" name="last_name" placeholder="Last Name"
+                                    value="@if(!empty($user)){{ $user->last_name }}@endif"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-4">
+                            <label class="form-label">Mobile Number</label>
+                            <div class="input-group input-group-outline">
+                                <input type="text" name="mobile" placeholder="Mobile Number"
+                                    value="@if(!empty($user)){{ $user->mobile }}@endif"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-4">
+                            <label class="form-label">Email</label>
+                            <div class="input-group input-group-outline">
+                                <input type="email" name="email" placeholder="Email"
+                                    value="@if(!empty($user)){{ $user->email }}@endif"
+                                    class="form-control">
                             </div>
                         </div>
 
 
-
-                        <div class="col-md-4">
-                            <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Mobile Number</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control">
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-4">
+                        <div class="col-md-4 mt-4">
                             <label>Date of birth</label>
-                            <div class="input-group input-group-outline my-3">
-                                <input type="date" class="form-control">
-                              </div>
-                              
-                            {{-- <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Date of birth</label>
-                                <input type="date" class="form-control">
-                            </div> --}}
+                            <div class="input-group input-group-outline">
+                                <input type="date" name="birth_date" value="@if(!empty($user)){{ $user->birth_date }} @endif"class="form-control">
+                            </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mt-4">
                             <label class="form-label">Department</label>
-                            <div class="input-group input-group-outline my-3">
+                            <div class="input-group input-group-outline">
                                 {{-- <input type="text" class="form-control"> --}}
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
+                                <select class="form-control" name="dept" id="exampleFormControlSelect1" selected>
+                                    @foreach ($departs as $depart)
+                                        <option value="{{ $depart->id }}"
+                                            @if ($user->dept == $depart->id) selected @endif>{{ $depart->name }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
-
+                        <div class="col-md-4 mt-4">
                             <label>Date of joining</label>
-                            <div class="input-group input-group-outline my-3">
-                                <input type="date" class="form-control">
-                              </div>
-                            {{-- <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Date of joining</label>
-                                <input type="date" class="form-control">
-                            </div> --}}
+                            <div class="input-group input-group-outline">
+                                <input type="date" name="date_of_joining" required
+                                    value="@if (!empty($user)) {{ $user->date_of_joining }} @endif"
+                                    class="form-control">
+                            </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
-                            <textarea class="form-control" rows="5" placeholder="Address" spellcheck="false"></textarea>
+                                <textarea class="form-control" name="address" rows="5" placeholder="Address" spellcheck="false">@if(!empty($user)){{$user->address}}@endif</textarea>
                             </div>
-
-                            {{-- <div class="input-group input-group-outline my-3">
-                                <label class="form-label">Department</label>
-                                <input type="textarea" class="form-control">
-                            </div> --}}
                         </div>
 
                     </div>
 
                     <div class="mt-4">
-                        <button class="btn btn-primary px-5" type="button">Update</button>
+                        <button class="btn btn-primary px-5" type="submit">Update</button>
                         <button class="btn btn-secondary text-dark ms-2 px-5" type="button">Cancel</button>
                     </div>
                 </form>
@@ -235,7 +240,7 @@
     </div>
 </div>
 @include('layouts.footer')
-
+{!! Toastr::message() !!}
 <script>
     function openCity(evt, cityName) {
         var i, x, tablinks;

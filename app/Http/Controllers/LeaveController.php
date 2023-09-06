@@ -22,9 +22,7 @@ class LeaveController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    // $actionBtn = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-pencil">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fa-solid fa-trash"></i>';
                     $actionBtn = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" data-toggle="tooltip" class="editLeave" data-id="'.$row->id.'"><i class="fa-solid fa-pencil">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></a><a href="javascript:void(0)" data-toggle="tooltip" class="deleteLeave" data-id="'.$row->id.'"><i class="fa-solid fa-trash"></i></a>';
-
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
@@ -69,9 +67,9 @@ class LeaveController extends Controller
     {
         $leave = Leave::where('id', $l_id)->orderBy('id', 'DESC')->first();
 
-        // $leave->join = implode($leave->start_date, '-' ,$leave->end_date);
-        // dd($leave);
+        $join =  [$leave->start_date, $leave->end_date];
 
+        $leave->date = implode(' - ', array_values($join)); 
         return response()->json($leave);
     }
 

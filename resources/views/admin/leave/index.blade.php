@@ -57,8 +57,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group input-group-outline my-3">
-                                <textarea name="leave_reason" id="leave_reason" class="form-control" required>
-                                </textarea>
+                                <textarea name="leave_reason" id="leave_reason" class="form-control" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -126,8 +125,7 @@
                 data) {
                 $('#exampleModalCenter').modal('show');
                 $('#leave_id').val(data.id);
-                $('#dates').val(data.start_date);
-                $('#dates').val(data.end_date);
+                $('#dates').val(data.date);
                 $('#leave_type').val(data.leave_type);
                 $('#leave_reason').val(data.leave_reason);
             })
