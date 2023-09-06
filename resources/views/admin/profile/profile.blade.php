@@ -120,7 +120,9 @@
                         <p>
                             @foreach ($departs as $depart)
                                 @if ($depart->id == $user->dept)
-                                    {{ isset($depart->name) ? $depart->name : 'N/A' }}
+                                    {{ $depart->name }}
+                                @else
+                                <p>N/A</p>
                                 @endif
                             @endforeach
                         </p>
@@ -194,7 +196,9 @@
                         <div class="col-md-4 mt-4">
                             <label>Date of birth</label>
                             <div class="input-group input-group-outline">
-                                <input type="date" name="birth_date" value="@if(!empty($user)){{ $user->birth_date }} @endif"class="form-control">
+                                {{-- <input type="date" name="birth_date" selected
+                                value="@if (!empty($user)){{\Carbon\Carbon::parse($user->birth_date)->format('d-m-Y')}}@endif" class="form-control"> --}}
+                                <input type="date" name="birth_date" class="form-control" value="{{ $user->birth_date }}" placeholder="Date">
                             </div>
                         </div>
                         <div class="col-md-4 mt-4">
@@ -213,8 +217,8 @@
                         <div class="col-md-4 mt-4">
                             <label>Date of joining</label>
                             <div class="input-group input-group-outline">
-                                <input type="date" name="date_of_joining" required
-                                    value="@if (!empty($user)) {{ $user->date_of_joining }} @endif"
+                                <input type="date" name="date_of_joining"
+                                    value="{{ $user->date_of_joining }}"
                                     class="form-control">
                             </div>
                         </div>

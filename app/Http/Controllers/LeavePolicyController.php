@@ -18,7 +18,7 @@ class LeavePolicyController extends Controller
     {
         $data = $request->input();
         $ins = array(
-            'detail' => $data['detail'] ? $data['detail'] : 'N/A',
+            'detail' => $data['detail'] ? $data['detail'] : null,
         );
         $policy = Policy::where('id',1)->first();
         if (isset($policy->id)) {

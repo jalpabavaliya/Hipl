@@ -27,15 +27,10 @@ class MyProfileController extends Controller
             'mobile' => $data['mobile'] ? $data['mobile'] : 'N/A',
             'email' => $data['email'] ? $data['email'] : 'N/A',
             'dept' => $data['dept'] ? $data['dept'] : '0',
-
-            'birth_date' => $data['birth_date'] ? $data['birth_date'] : ' ',
-            'date_of_joining' => $data['date_of_joining'] ? $data['date_of_joining'] : ' ',
-
-
+            'birth_date' => $data['birth_date'] ? $data['birth_date'] : null,
+            'date_of_joining' => $data['date_of_joining'] ? $data['date_of_joining'] : null,
             'address' => $data['address'] ? $data['address'] : 'N/A',
         );
-
-        // dd($ins);
 
         if (!empty($data['user_id'])) {
             User::where('id', $data['user_id'])->update($ins);
