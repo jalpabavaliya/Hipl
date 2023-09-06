@@ -38,38 +38,36 @@ class LeaveController extends Controller
         $fromDate = isset($dates[0]) ? date('Y-m-d', strtotime($dates[0])) : '';
         $toDate = isset($dates[1]) ? date('Y-m-d', strtotime($dates[1])) : '';
 
-        $ins = array(
-            'start_date' => $fromDate,
-            'end_date' =>  $toDate,
-            'leave_type' => $request->leave_type,
-            'leave_reason' => $data['leave_reason'] ? $data['leave_reason'] : 'N/A',
-        );
-
-        if (!empty($data['leave_id'])) {
-            Leave::where('id', $data['leave_id'])->update([
-                'start_date' => $fromDate,
-                'end_date' =>  $toDate,
-                'leave_type' => $request->leave_type,
-                'leave_reason' => $data['leave_reason'] ? $data['leave_reason'] : 'N/A',
-            ]);
-            Toastr::success('Success! Leave Updated');
-
-            return back();
-        } else {
-            Leave::create($ins)->id;
-
-            Toastr::success('Success! Leave Inserted');
-            return back();
-        }
+        try {
+                if ($request->id) {
+                    Leave::where('id', $request->id)->update([
+                        'start_date' => $fromDate,
+                        'end_date' => $toDate,
+                        'number_of_leave' => $request->number_of_leave,
+                        'leave_type' => $request->leave_type,
+                        'leave_reason' => $request->leave_reason,
+                    ]);
+                    Toastr::success('Success! Leave Updated successfully');
+                    return back();
+                } else {
+                    Leave::create([
+                        'start_date' => $fromDate,
+                        'end_date' => $toDate,
+                        'number_of_leave' => $request->number_of_leave,
+                        'leave_type' => $request->leave_type,
+                        'leave_reason' => $request->leave_reason,
+                        ]);
+                        Toastr::success('Success! Leave Inserted Successfully');
+                        return back();
+                }
+            } catch (\Throwable $th) {
+                return back();
+            }
     }
 
-    public function edit($l_id)
+    public function edit($id)
     {
-        $leave = Leave::where('id', $l_id)->orderBy('id', 'DESC')->first();
-
-        $join =  [$leave->start_date, $leave->end_date];
-
-        $leave->date = implode(' - ', array_values($join)); 
+        $leave = Leave::find($id);
         return response()->json($leave);
     }
 

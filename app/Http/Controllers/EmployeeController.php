@@ -112,8 +112,6 @@ class EmployeeController extends Controller
         }
     }
 
-
-
     public function edit(string $id)
     {
         $user = User::findOrFail($id);

@@ -13,7 +13,7 @@
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label"></label>
                                 <input type="text" class="form-control" name="leave" value="{{ $data->number_of_leave }}">
-                               
+
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -22,7 +22,7 @@
                             </div>
                         </div>
                     </div>
-                </form> 
+                </form>
             </div>
         </div>
     </div>

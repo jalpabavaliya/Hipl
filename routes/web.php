@@ -37,7 +37,7 @@ Route::resource('roles', RoleController::class);
 
 
 
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // Route::get('/profile', function () { return view('admin.profile.profile'); });
 
 // Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

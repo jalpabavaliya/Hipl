@@ -80,7 +80,7 @@
                                 <div class="col-md-6">
                                     <label class="form-label">Productivity</label>
                                     <div class="input-group input-group-outline mb-4">
-                                        <input type="text" name="productivity" id="productivity" class="form-control"
+                                        <input type="number" name="productivity" id="productivity" class="form-control"
                                             required>
                                     </div>
                                 </div>
