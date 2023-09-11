@@ -12,6 +12,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\LeavePolicyController;
+use App\Http\Controllers\DocumentController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -49,7 +50,7 @@ Route::post('/employee', 'App\Http\Controllers\EmployeeController@index')->name(
 Route::get('employee/list', [EmployeeController::class, 'getEmployee'])->name('employee.list');
 Route::post('employee/store', [EmployeeController::class, 'store'])->name('employee.store');
 Route::get('/employee/edit/{id}', 'App\Http\Controllers\EmployeeController@edit')->name('employee.edit');
-Route::post('employee/edit/{id}', 'App\Http\Controllers\EmployeeController@update');
+Route::post('employee/edit/{id}', 'App\Http\Controllers\EmployeeController@update')->name('employee.edit');
 Route::delete('employee/delete/{id}', 'App\Http\Controllers\EmployeeController@destroy')->name('employee.delete');
 
 Route::get('/department', 'App\Http\Controllers\DepartmentController@index');
@@ -86,6 +87,14 @@ Route::get('/leave-policy', 'App\Http\Controllers\LeavePolicyController@index')-
 Route::post('leave-policy/store', [LeavePolicyController::class, 'store'])->name('leave_policy.store');
 
 
+Route::get('/documents', 'App\Http\Controllers\DocumentController@index')->name('documents');
+Route::get('documents/list', [DocumentController::class, 'getDocument'])->name('documents.list');
+Route::get('documents/create', [DocumentController::class, 'create'])->name('documents.create');
+Route::post('documents/store', [DocumentController::class, 'store'])->name('documents.store');
+Route::delete('/documents/{id}','App\Http\Controllers\DocumentController@destroy')->name('documents.destroy');
+Route::get('/documents/edit/{id}', 'App\Http\Controllers\DocumentController@edit')->name('documents.edit');
+Route::post('employee/edit/{id}', 'App\Http\Controllers\EmployeeController@update')->name('documents.edit');
+
 Route::get('/home', function () {
     return view('admin.dashboard');
 });
@@ -119,9 +128,9 @@ Route::get('/salary-report', function () {
 Route::get('/leave-record', function () {
     return view('admin.leaveRecord.index');
 });
-Route::get('/documents', function () {
-    return view('admin.documents.index');
-});
+// Route::get('/documents', function () {
+//     return view('admin.documents.index');
+// });
 
 
 

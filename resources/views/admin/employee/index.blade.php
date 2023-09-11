@@ -43,8 +43,18 @@
         });
         var table = $('.data-table').DataTable({
             processing: true,
-            serverSide: false,
+            serverSide: true,
             ajax: "{{ route('employee.list') }}",
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            language: {
+                processing: '<span>Processing</span>',
+            },
+            search: {
+                caseInsensitive: false,
+            },
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
@@ -107,4 +117,3 @@
 
     });
 </script>
-

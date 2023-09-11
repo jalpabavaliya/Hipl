@@ -60,7 +60,7 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" id="close" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
                             </div>
@@ -115,7 +115,9 @@
                 $('#salary').val(data.salary);
             });
         });
-
+        $('#close').click(function() {
+            $('#exampleModalCenter').modal('hide');
+        });
         $('body').on('click', '.deleteSalary', function() {
             var salary_id = $(this).data("id");
             alert("Are You sure want to delete !");

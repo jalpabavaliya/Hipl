@@ -46,4 +46,9 @@
 <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
 <script src="../assets/js/core/toastr.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"/>
+<link href='https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css' rel='stylesheet' type='text/css'>
 {!! Toastr::message() !!}

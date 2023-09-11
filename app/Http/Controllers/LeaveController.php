@@ -12,7 +12,7 @@ class LeaveController extends Controller
 {
     public function index()
     {
-        return view('admin.department.index');
+        return view('admin.leave.index');
     }
 
     public function getLeave(Request $request){
