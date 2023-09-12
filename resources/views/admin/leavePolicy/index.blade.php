@@ -10,9 +10,10 @@
                     {{-- <input type="hidden" name="policy_id" id="policy_id"> --}}
                     <div class="form-group lang_form" id="form">
                         <textarea name="detail" class="form-control ckeditor" cols="100" rows="20">
-                            {{-- {{ $policy }} --}}
-                        @if (!empty($policy)){{$policy->detail}}@endif
-                    </textarea>
+                            @if (!empty($policy))
+                                {{ $policy->detail }}
+                            @endif
+                        </textarea>
                     </div>
                     <div class="mt-4">
                         <button class="btn btn-primary px-5" type="submit">Save</button>
@@ -35,4 +36,27 @@
             options: ['left', 'right']
         },
     });
+
+    // loadThreadsFromServer: function loadThreadsFromServer() {
+    //     $.ajax({
+    //         url: this.props.url,
+    //         dataType: 'json',
+    //         cache: false,
+    //         success: function(data) {
+    //             this.setState({
+    //                 data: data,
+    //                 async: true,
+    //                 cache: false,
+    //             });
+    //         }.bind(this),
+    //         error: function(xhr, status, err) {
+    //             console.error(this.props.url, status, err.toString());
+    //         }.bind(this)
+    //     });
+    // },
+
+    // fetch(`https://api.github.com/users/${login}`)
+    // .then(response => response.json())
+    // .then(setData)
+    // .catch(error => (console.log(error)));
 </script>
