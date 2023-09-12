@@ -28231,7 +28231,6 @@ table.dataTable thead>tr>td.sorting {
     background: #FAFBFC;
 }
 
-
 .right-form .leaved-top h2 {
     font-size: 30px;
     font-weight: 600;
@@ -28283,17 +28282,26 @@ table.dataTable thead>tr>td.sorting {
     margin-top: 45px;
     border: 1px solid #F8F9FA;
     border-radius: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
+   
 }
 
 #white i {
     margin-top: 25px;
 }
 
+div.dt-buttons {
+  padding-bottom: 10px;  
+}
+button.dt-button {
+  border-radius: 10px 10px 10px 10px !important;
+  background-color: #EAF4FB !important;
+  border: none !important;
+}
 #white span {
-    color: #000;
-    font-size: 25px;
-    font-weight: 600;
+    color: #192354;
+    font-size: 15px;
+    font-weight: 600;   
 }
 
 .main-table {

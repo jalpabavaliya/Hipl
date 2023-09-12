@@ -24,7 +24,9 @@
                                         <div class="Neon-input-text">
                                             <h3>Drag&amp;Drop files here</h3> <span
                                                 style="display:inline-block; margin: 15px 0">or</span>
-                                        </div><a class="Neon-input-choose-btn blue">Browse Files</a>
+                                        </div>
+                                      
+                                        <input type="file" name="adhar_card" class="Neon-input-choose-btn blue">
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +43,9 @@
                                         <div class="Neon-input-text">
                                             <h3>Drag&amp;Drop files here</h3> <span
                                                 style="display:inline-block; margin: 15px 0">or</span>
-                                        </div><a class="Neon-input-choose-btn blue">Browse Files</a>
+                                        </div>
+                                        <input type="file" name="pan_card" class="Neon-input-choose-btn blue">
+                                        <!-- <a class="Neon-input-choose-btn blue">Browse Files</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +62,9 @@
                                         <div class="Neon-input-text">
                                             <h3>Drag&amp;Drop files here</h3> <span
                                                 style="display:inline-block; margin: 15px 0">or</span>
-                                        </div><a class="Neon-input-choose-btn blue">Browse Files</a>
+                                        </div>
+                                        <input type="file" name="voter_card" class="Neon-input-choose-btn blue">
+                                        <!-- <a class="Neon-input-choose-btn blue">Browse Files</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +83,9 @@
                                         <div class="Neon-input-text">
                                             <h3>Drag&amp;Drop files here</h3> <span
                                                 style="display:inline-block; margin: 15px 0">or</span>
-                                        </div><a class="Neon-input-choose-btn blue">Browse Files</a>
+                                        </div>
+                                        <input type="file" name="standard_10_markshhet" class="Neon-input-choose-btn blue">
+                                        <!-- <a class="Neon-input-choose-btn blue">Browse Files</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +102,9 @@
                                         <div class="Neon-input-text">
                                             <h3>Drag&amp;Drop files here</h3> <span
                                                 style="display:inline-block; margin: 15px 0">or</span>
-                                        </div><a class="Neon-input-choose-btn blue">Browse Files</a>
+                                        </div>
+                                        <input type="file" name="standard_12_markshhet" class="Neon-input-choose-btn blue">
+                                        <!-- <a class="Neon-input-choose-btn blue">Browse Files</a> -->
                                     </div>
                                 </div>
                             </div>

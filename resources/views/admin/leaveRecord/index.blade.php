@@ -40,6 +40,14 @@
             processing: true,
             serverSide: false,
             ajax: "{{ route('leave.list') }}",
+            dom: 'Blfrtip',
+           
+           buttons: [
+               'copy', 'csv', 'excel', 'pdf', 'print'
+           ],
+           language: {
+               processing: '<span>Processing</span>',
+           },
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'

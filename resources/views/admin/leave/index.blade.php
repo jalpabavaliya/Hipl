@@ -110,6 +110,7 @@
             serverSide: false,
             ajax: "{{ route('leave.list') }}",
             dom: 'Blfrtip',
+           
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ],
