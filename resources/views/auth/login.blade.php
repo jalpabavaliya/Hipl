@@ -61,7 +61,7 @@
               <div class="card-body">
               <img src="logo.png" id="logo" width="300px">
 
-              <form method="POST" action="{{ route('login') }}">
+              <form method="POST" action="{{ route('store') }}">
                 @csrf
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">E-mail</label>

@@ -158,7 +158,6 @@ class DocumentController extends Controller
                 'standard_12_markshhet' =>'required|mimes:jpeg,png,pdf|max:2048',
             ]);
            
-
             // $auth=Auth::id();
             if($validateUser->fails()){
                 return back();
@@ -208,7 +207,7 @@ class DocumentController extends Controller
                'standard_12_markshhet'=>$standard_12_markshhet
             ]);
 
-            Toastr::success('Success! Employee Saved Successfully');
+            Toastr::success('Success! Document Saved Successfully');
             return redirect()->route('documents');
            
             return back();
@@ -225,27 +224,98 @@ class DocumentController extends Controller
         //
     }
 
+
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+       $a=Document::find($id);
+     
+       return view('admin.documents.edit',compact('a'));
+       
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        try {
+            $validateUser = Validator::make($request->all(), [
+                'adhar_card' => 'required|mimes:jpeg,png,pdf|max:2048',
+                'pan_card' =>'required|mimes:jpeg,png,pdf|max:2048',
+                'voter_card' =>'required|mimes:jpeg,png,pdf|max:2048',
+                'standard_10_markshhet' =>'required|mimes:jpeg,png,pdf|max:2048',
+                'standard_12_markshhet' =>'required|mimes:jpeg,png,pdf|max:2048',
+            ]);
+
+            if($validateUser->fails()){
+                return back();
+            }
+            
+            if ($request->hasFile('adhar_card')) {
+                $file = $request->file('adhar_card');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('adhar_card', $filename);
+                $adhar_card ->update($filename);
+            }
+            if ($request->hasFile('pan_card')) {
+                $file = $request->file('pan_card');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('pan_card', $filename);
+                $pan_card = $filename;
+            }
+            if ($request->hasFile('voter_card')) {
+                $file = $request->file('voter_card');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('voter_card', $filename);
+                $voter_card = $filename;
+            }
+            if ($request->hasFile('standard_10_markshhet')) {
+                $file = $request->file('standard_10_markshhet');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('standard_10_markshhet', $filename);
+                $standard_10_markshhet = $filename;
+            }
+            if ($request->hasFile('standard_12_markshhet')) {
+                $file = $request->file('standard_12_markshhet');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('standard_12_markshhet', $filename);
+                $standard_12_markshhet = $filename;
+            }
+           
+            $document=Document::where('id',$id);
+          
+            $document->update([
+                // 'user_id' =>$auth,
+               'adhar_card' => $adhar_card,
+               'pan_card'=>$pan_card,
+               'voter_card'=>$voter_card,
+               'standard_10_markshhet'=>$standard_10_markshhet,
+               'standard_12_markshhet'=>$standard_12_markshhet,
+               'updated_at'=>Carbon::now(),
+            ]);
+            Toastr::success('Success! Document update Successfully');
+            return redirect()->route('documents');
+            // return back();
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
-    /**
+      /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy($id)
+    {    
+        Document::find($id)->delete();
+        Toastr::success('Success! User Document Deleted Successfully');
+        return redirect()->route('documents');
     }
 }

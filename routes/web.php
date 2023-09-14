@@ -28,12 +28,13 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::get('/', function () { return view('auth.login'); });
 Route::get('/login', function () { return view('auth.login'); });
-Route::post('/login', [AuthController::class, 'store'])->name('login');
+// Route::post('/login', [AuthController::class, 'store'])->name('login');
+Route::post('/store', [AuthController::class, 'store'])->name('store');
 
 Auth::routes();
 // dd(auth()->user());
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/userdashbord', [App\Http\Controllers\HomeController::class, 'userdashbord'])->name('userdashbord');
 Route::resource('roles', RoleController::class);
 
 
@@ -91,9 +92,9 @@ Route::get('/documents', 'App\Http\Controllers\DocumentController@index')->name(
 Route::get('documents/list', [DocumentController::class, 'getDocument'])->name('documents.list');
 Route::get('documents/create', [DocumentController::class, 'create'])->name('documents.create');
 Route::post('documents/store', [DocumentController::class, 'store'])->name('documents.store');
-Route::delete('/documents/{id}','App\Http\Controllers\DocumentController@destroy')->name('documents.destroy');
+Route::get('/documents/{id}','App\Http\Controllers\DocumentController@destroy')->name('documents.destroy');
 Route::get('/documents/edit/{id}', 'App\Http\Controllers\DocumentController@edit')->name('documents.edit');
-Route::post('employee/edit/{id}', 'App\Http\Controllers\EmployeeController@update')->name('documents.edit');
+Route::post('/documents/update', 'App\Http\Controllers\DocumentController@update')->name('documents.update');
 
 Route::get('/home', function () {
     return view('admin.dashboard');

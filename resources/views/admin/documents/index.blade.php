@@ -24,12 +24,15 @@
                     @foreach($data as $ans)
                     <tbody>
                     <th>{{$ans->id}}</th>
-                    <th><img class="bd-placeholder-img" src="{{ url('adhar_card/'.$ans->adhar_card) }}" style="height:100px;"></th>
-                    <th><img class="bd-placeholder-img" src="{{ url('pan_card/'.$ans->pan_card) }}" style="height:100px;"></th>
-                    <th><img class="bd-placeholder-img" src="{{ url('voter_card/'.$ans->voter_card) }}" style="height:100px;"></th>
-                    <th><img class="bd-placeholder-img" src="{{ url('standard_10_markshhet/'.$ans->standard_10_markshhet) }}" style="height:100px;"></th>
-                    <th><img class="bd-placeholder-img" src="{{ url('standard_12_markshhet/'.$ans->standard_12_markshhet) }}" style="height:100px;"></th>
-
+                    <th><img class="bd-placeholder-img" src="{{ url('adhar_card/'.$ans->adhar_card) }}" width='100%' style="height:100px;"></th>
+                    <th><img class="bd-placeholder-img" src="{{ url('pan_card/'.$ans->pan_card) }}" width='100%' style="height:100px;"></th>
+                    <th><img class="bd-placeholder-img" src="{{ url('voter_card/'.$ans->voter_card) }}" width='100%' style="height:100px;"></th>
+                    <th><img class="bd-placeholder-img" src="{{ url('standard_10_markshhet/'.$ans->standard_10_markshhet) }}" width='100%' style="height:100px;"></th>
+                    <th><img class="bd-placeholder-img" src="{{ url('standard_12_markshhet/'.$ans->standard_12_markshhet) }}" width='100%' style="height:100px;"></th>
+                  
+                    <th><a href="{{url('/documents/edit/' .$ans->id)}}"><i class="fa fa-pencil"></i></a>
+                        <a href="{{url('/documents/' .$ans->id)}}"><i class="fa fa-trash"></i></a>
+                    </th>
                     </tbody>
                     @endforeach
                 </table>
@@ -87,6 +90,6 @@
                 },
             ]
         });
-
+        
     });
 </script>
